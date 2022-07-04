@@ -1,0 +1,43 @@
+.mr_content {
+    width: 950px;
+    background-color: white;
+    height: 400px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.content_left {
+    width: 750px;
+    height: 400px;
+    background: #f9f9f9;
+    display: flex;
+}
+.content_detail{
+    display: flex;
+    height: 125px;
+}
+.img_detail {
+    width: 110px;
+    height: 110px;
+    background: #f9f9f9;
+}
+
+.img {
+    margin-top: 20px;
+    width: 65px;
+    height: 65px;
+    margin-left: 25px;
+}
+
+.detail {
+    width: 640px;
+    height: 130px;
+    background-color:#f9f9f9 ;
+}
+.detail_icon{
+    
+    margin-top: 5px;
+    height: 30px;
+    display: flex;
+}

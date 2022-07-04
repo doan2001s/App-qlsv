@@ -1,0 +1,126 @@
+.body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_left {
+    width: 250px;
+    height: 600px;
+    background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+    margin-top: 15px;
+    margin-left: 15px;
+    float: left;
+}
+
+.mf_content {
+    width: auto;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.hr {
+    background-color: white;
+    height: 1px;
+}
+
+.mf_content h5 {
+    padding-top: 20px;
+    color: white;
+}
+
+.link {
+    text-decoration: none;
+}
+
+#menu ul {
+    width: auto;
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
+}
+
+#menu li {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 48px;
+    line-height: 40px;
+    padding: 0 1em;
+    font-size: 32;
+    color: white;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+#menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+}
+
+.li:hover {
+    background: silver;
+    transition: 0.5s;
+}
+
+.active {
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+}
+
+.active:hover {
+    color: white;
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+}
+
+.icon {
+    width: 35px;
+}
+
+.main_right {
+    width: 1100px;
+    height: 625px;
+    float: right;
+    overflow-y: scroll;
+}
+
+.mr_mid2 {
+    justify-content: center;
+    display: grid;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: -24px;
+    padding: 24px 16px;
+    opacity: 1;
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+    color: white;
+    border-radius: 0.5rem;
+    width: 900px;
+    margin: auto;
+}
+.detail_name{
+    display: flex;
+    justify-content: center;
+}
+.container_detailSV{
+    z-index: 0;
+    width: 900px;
+    height: 300px;
+    padding-top: 20px;
+    margin: auto;
+}
+.div_input{
+    /* display: flex;
+    justify-content: space-around; */
+    display: grid;
+    z-index: 0;
+  }
+  .div_input2{
+    z-index: 0;
+    align-content: baseline;
+    display: grid;
+    margin-left: 50px;
+  }
