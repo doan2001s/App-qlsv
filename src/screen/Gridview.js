@@ -125,7 +125,6 @@ const Gridview = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='li'><div className='icon'><FaTachometerAlt size={22} /></div><Link to="/home">Quản lý</Link></li>
                         <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
                         <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
@@ -188,8 +187,8 @@ const Gridview = () => {
                     </Form>
                 </div>
                 <div className="change_list">
-                    <Link to="/sinhvien"><Button>Xem sinh viên theo dạng danh sách</Button></Link>
-                    <Link to="/gridview"><Button>Xem sinh viên theo dạng bảng</Button></Link>
+                    <Link to="/sinhvien"><Button>Xem sinh viên theo dạng bảng</Button></Link>
+                    <Link to="/gridview"><Button>Xem sinh viên theo dạng lưới</Button></Link>
                 </div>
                 <div className="gridview">
                     {currentTodos.filter((sinhvien) => {

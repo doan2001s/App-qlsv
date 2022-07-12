@@ -6,8 +6,8 @@ import { FaUserGraduate, FaTachometerAlt, FaSignInAlt } from 'react-icons/fa'
 import { Link, } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import { Form } from "react-bootstrap";
-import {isEmpty} from 'validator'
-import { Input, Spacer, Button, Grid,Text } from "@nextui-org/react";
+import { isEmpty } from 'validator'
+import { Input, Spacer, Button, Grid, Text } from "@nextui-org/react";
 import './Css/Edit.css'
 import { ImProfile } from "react-icons/im"
 import Avatar from 'react-avatar';
@@ -160,6 +160,7 @@ const Edit = () => {
                             const sinhvien = doc(db, "sinhvien", id)
                             const data = { masv: masv, tensv: tensv, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa }
                             updateDoc(sinhvien, data)
+                            navigate("/sinhvien")
                             alert("Cập nhật thành công")
                         }
 
@@ -206,7 +207,6 @@ const Edit = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='li'><div className='icon'><FaTachometerAlt size={22} /></div><Link to="/home">Quản lý</Link></li>
                         <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
                         <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
@@ -261,46 +261,46 @@ const Edit = () => {
                             <Spacer y={2} />
                             <div className='form_container'>
                                 <div className='div_input'>
-                                    <Input clearable bordered labelPlaceholder="Mã sinh viên" type="text"
+                                    <Input clearable bordered labelPlaceholder="Mã sinh viên" type="text" disabled
                                         value={masv} />
                                     <Spacer y={2} />
-                                    <Input color ={colorInput.email} required  clearable bordered labelPlaceholder="Email" type="email"
+                                    <Input color={colorInput.email} required clearable bordered labelPlaceholder="Email" type="email" style={{ textTransform: 'lowercase' }}
                                         onChange={handleEmail} value={email} />
-                                        <Text>{errorMessage.email}</Text>
+                                    <Text>{errorMessage.email}</Text>
                                     <Spacer y={2} />
-                                    <Input color={colorInput.ten}  clearable bordered labelPlaceholder="Họ và tên" required style={{ textTransform: 'capitalize' }}
+                                    <Input color={colorInput.ten} clearable bordered labelPlaceholder="Họ và tên" required style={{ textTransform: 'capitalize' }}
                                         onChange={handleTen} value={tensv} />
-                                        <Text>{errorMessage.ten}</Text>
+                                    <Text>{errorMessage.ten}</Text>
                                     <Spacer y={2} />
 
                                 </div>
                                 <div className='div_input'>
-                                    <Input color={colorInput.ngaysinh}  clearable bordered labelPlaceholder="Ngày sinh" required
+                                    <Input color={colorInput.ngaysinh} clearable bordered labelPlaceholder="Ngày sinh" required
                                         onChange={handleNgaysinh} value={ngaysinh} type="date" />
-                                          <Text>{errorMessage.ngaysinh}</Text>
+                                    <Text>{errorMessage.ngaysinh}</Text>
                                     <Spacer y={2} />
                                     <Input color={colorInput.diachi} clearable bordered labelPlaceholder="Địa chỉ" required style={{ textTransform: 'capitalize' }}
                                         onChange={handleDiachi} value={diachi} />
-                                         <Text>{errorMessage.diachi}</Text>
+                                    <Text>{errorMessage.diachi}</Text>
                                     <Spacer y={2} />
-                                    <Input color={colorInput.khoa}  clearable bordered labelPlaceholder="Khoa" required style={{ textTransform: 'uppercase' }}
+                                    <Input color={colorInput.khoa} clearable bordered labelPlaceholder="Khoa" required style={{ textTransform: 'uppercase' }}
                                         onChange={handleKhoa} value={khoa} />
-                                         <Text>{errorMessage.khoa}</Text>
+                                    <Text>{errorMessage.khoa}</Text>
                                     <Spacer y={2} />
 
                                 </div>
                                 <div className='div_input2'>
                                     <Input color={colorInput.lop} clearable bordered labelPlaceholder="Lớp" required style={{ textTransform: 'uppercase' }}
                                         onChange={handleLop} value={lop} />
-                                        <Text>{errorMessage.lop}</Text>
+                                    <Text>{errorMessage.lop}</Text>
                                     <Spacer y={2} />
-                                    <Input  color={colorInput.trangthai} required clearable bordered labelPlaceholder="Trạng thái"
+                                    <Input color={colorInput.trangthai} required clearable bordered labelPlaceholder="Trạng thái"
                                         onChange={handleTrangthai} value={trangthai} />
-                                        <Text>{errorMessage.trangthai}</Text>
+                                    <Text>{errorMessage.trangthai}</Text>
                                     <Spacer y={2} />
                                     <Input color={colorInput.sdt} clearable bordered labelPlaceholder="Số điện thoại" required
                                         onChange={handleSdt} value={sdt} />
-                                        <Text>{errorMessage.sdt}</Text>
+                                    <Text>{errorMessage.sdt}</Text>
                                     <Spacer y={2} />
                                 </div>
                             </div>

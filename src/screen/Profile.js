@@ -162,7 +162,6 @@ const Profile = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='li'><div className='icon'><FaTachometerAlt size={22} /></div><Link to="/home">Quản lý</Link></li>
                         <li className='li'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
                         <li className='active'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}

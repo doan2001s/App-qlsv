@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { Input, Text } from "@nextui-org/react";
+import { Input, Text, Spacer } from "@nextui-org/react";
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import "./Css/Auth.css";
 import { db } from "./firebase";
@@ -25,10 +25,10 @@ const Login = () => {
     setEmail(e.target.value.trim())
     const ergx = /[a-zA-Z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
     if (ergx.test(email)) {
-      setErrorMessage({ email: "Email hop le" })
+      setErrorMessage({ email: "" })
       setColorInput({ email: 'error' });
     } else if (!ergx.test(email) && email !== "") {
-      setErrorMessage({ email: "Email của bạn phải có kiểu doan@gmail.com!" });
+      setErrorMessage({ email: "Email của bạn phải có kiểu abcxyz98@gmail.com!" });
       setColorInput({ email: 'error' });
     }
   }
@@ -77,41 +77,36 @@ const Login = () => {
   }
 
   return (
-    <div className="h-full pl-15">
+    <div className="body">
       <div className="FormPage">
-        <div className="p-4 box">
-          <h2 className="mb-3">Đăng nhập</h2>
+        <div className="form_detail">
+          <div className="form_h2">
+            <h2 className="">Đăng nhập</h2>
+          </div>
           <Form onSubmit={handleLogin}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Input css={{ w: "100%" }} Placeholder="Email" type="email"
-                // onChange={(e) => setEmail(e.target.value)}
+            <Spacer y={1} />
+            <div className="form_input">
+              <Input rounded bordered css={{ w: "90%" }} labelPlaceholder="Email" type="email"
                 onChange={handleEmail}
               />
-              <Text color="error"> {errorMessage.email}</Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Input.Password css={{ w: "100%" }} Placeholder="Mật khẩu" type="password"
-                // onChange={(e) => setPassword(e.target.value)}
+            </div>
+            <Text color="error"> {errorMessage.email}</Text>
+            <Spacer y={2} />
+            <div className="form_input">
+              <Input.Password rounded bordered css={{ w: "90%" }} labelPlaceholder="Mật khẩu" type="password"
                 onChange={handlePassword}
               />
-              {/* {error?<p style={{color:"red"}}>Bạn cần phải nhập mật khẩu</p>:""} */}
-            </Form.Group>
-            <div className="d-grid gap-2">
+            </div>
+            <Spacer y={1} />
+            <div className="button_submit">
               <Button type="Submit">
                 Đăng nhập
               </Button>
             </div>
           </Form>
           <hr />
-          <div>
-            {/* <GoogleButton
-            className="g-btn"
-            type="dark"
-            onClick={SignInGoogle}
-          /> */}
-          </div>
         </div>
-        <div className="p-4 box mt-3 text-center">
+        <div className="form_text">
           Bạn chưa có tài khoản? <Link to="/form">Đăng ký</Link>
         </div>
       </div>

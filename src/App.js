@@ -6,7 +6,7 @@ import Sinhvien from './screen/Sinhvien';
 import Add from './screen/Add';
 import Profile from './screen/Profile';
 import Form from './screen/Com/Form';
-import Home from './screen/Home';
+// import Home from './screen/Home';
 import View from './screen/View';
 import Gridview from './screen/Gridview';
 // import {UserAuthContextProvider  } from './UserAuthContext';
@@ -23,7 +23,7 @@ const App = () => {
           <Route path = '/view/:id' element ={<View/>} />
           <Route path='/edit/:id' element={<Edit/>}/>
           <Route path="/" exact element={<Login accesstoken={true} />} />
-          <Route path='/home' element={<Home/>} />
+          {/* <Route path='/home' element={<Home/>} /> */}
       </Routes>
     // </UserAuthContextProvider>  
   )
