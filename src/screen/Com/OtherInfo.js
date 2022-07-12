@@ -21,9 +21,9 @@ function OtherInfo({ formData, setFormData, }) {
     }
     return (
         <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Spacer y={1.5} />
-                <Input rounded bordered color={colorInput.nickname} css={{ w: "100%" }} labelPlaceholder="Nickname" type="text"
+            <Spacer y={2} />
+            <div className="form_page_input">
+                <Input rounded bordered color={colorInput.nickname} css={{ w: "90%" }} labelPlaceholder="Nickname" type="text"
                     value={formData.nickname}
                     // onChange={(event) =>
                     //     setFormData({ ...formData, nicname: event.target.value })
@@ -31,23 +31,17 @@ function OtherInfo({ formData, setFormData, }) {
                     onChange={handleNickname}
                 />
                 <Text color="error">{errorMessage.nickname}</Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Spacer y={1.5} />
-                <Textarea rounded bordered css={{ w: "100%" }} labelPlaceholder="Mô tả" type="text"
+            </div>
+            <Spacer y={2} />
+            <div className="form_page_input">
+                <Textarea rounded bordered css={{ w: "90%" }} labelPlaceholder="Mô tả" type="text"
                     value={formData.mota}
                     onChange={(event) =>
                         setFormData({ ...formData, mota: event.target.value })
                     }
                 />
-                {/* <Spacer y={1.5} />
-                <label>Ảnh đại diện:</label>
-                <Input type="file"
-                    onChange={(event)
-                        => setFormData({ ...formData, file: event.target.files[0]})
-                    }
-                /> */}
-            </Form.Group>
+            </div>
+            <Spacer y={2} />
         </Form>
     );
 }

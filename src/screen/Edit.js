@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "./firebase";
 import { getDoc, doc, updateDoc } from 'firebase/firestore'
-import { FaUserGraduate, FaTachometerAlt, FaSignInAlt } from 'react-icons/fa'
+import { FaUserGraduate, FaSignInAlt } from 'react-icons/fa'
 import { Link, } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import { Form } from "react-bootstrap";
@@ -12,7 +12,6 @@ import './Css/Edit.css'
 import { ImProfile } from "react-icons/im"
 import Avatar from 'react-avatar';
 const Edit = () => {
-    //logout
     const handelLogOut = () => {
         localStorage.clear();
         navigate("/")

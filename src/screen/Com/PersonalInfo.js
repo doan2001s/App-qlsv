@@ -39,66 +39,31 @@ function PersonalInfo({ formData, setFormData, }) {
   }
   return (
     <Form>
-      <Form.Group className="mb-3">
-        <Spacer y={1.5} />
-        <Input rounded bordered color={colorInput.hoten} css={{ w: "100%" }} labelPlaceholder="Họ và tên" type="Text"
+      <Spacer y={1.5} />
+      <div className="form_page_input">
+        <Input rounded bordered color={colorInput.hoten} css={{ w: "90%" }} labelPlaceholder="Họ và tên" type="Text"
           value={formData.hoten}
-          // onChange={(event) =>
-          //   setFormData({ ...formData, hoten: event.target.value })
-          // }
           onChange={handleHoten}
         />
-        <Text color="error"> {errorMessage.hoten} </Text>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Spacer y={1.5} />
-        <Input rounded bordered css={{ w: "100%" }} labelPlaceholder="Số điện thoại" type="number"
+      </div>
+      <Text color="error"> {errorMessage.hoten} </Text>
+      <Spacer y={1.5} />
+      <div className="form_page_input">
+        <Input rounded bordered css={{ w: "90%" }} labelPlaceholder="Số điện thoại" type="number"
           value={formData.sdt}
           onChange={handleSdt}
-        // onChange={(event) =>
-        //   setFormData({ ...formData, sdt: event.target.value })
-        // }
         />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Spacer y={1.5} />
-        <Input rounded bordered color={colorInput.diachi} css={{ w: "100%" }} labelPlaceholder="Địa chỉ" type="text"
+      </div>
+      <Spacer y={1.5} />
+      <div className="form_page_input">
+        <Input rounded bordered color={colorInput.diachi} css={{ w: "90%" }} labelPlaceholder="Địa chỉ" type="text"
           value={formData.diachi}
           onChange={handleDiachi}
-        // onChange={(event) =>
-        //   setFormData({ ...formData, diachi: event.target.value })
-        // } 
         />
-        <Text color="error"> {errorMessage.diachi} </Text>
-      </Form.Group>
+      </div>
+      <Text color="error"> {errorMessage.diachi} </Text>
       <Spacer y={1.5} />
     </Form>
-    // <div className="personal-info-container">
-    //   <input
-    //     type="text"
-    //     placeholder="Họ và tên"
-    //     value={formData.firstName}
-    //     onChange={(e) => {
-    //       setFormData({ ...formData, firstName: e.target.value });
-    //     }}
-    //   />
-    //   <input
-    //     type="text"
-    //     placeholder="Số đi"
-    //     value={formData.lastName}
-    //     onChange={(e) => {
-    //       setFormData({ ...formData, lastName: e.target.value });
-    //     }}
-    //   />
-    //   <input
-    //     type="text"
-    //     placeholder="Username..."
-    //     value={formData.username}
-    //     onChange={(e) => {
-    //       setFormData({ ...formData, username: e.target.value });
-    //     }}
-    //   />
-    // </div>
   );
 }
 

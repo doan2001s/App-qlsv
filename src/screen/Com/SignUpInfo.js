@@ -40,7 +40,7 @@ function SignUpInfo({ formData, setFormData }) {
             setErrorMessage({ confirmPassword: "Hãy nhập xác nhận mật khẩu" })
             setColorInput({ confirmPassword: 'error' });
         }
-         else {
+        else {
             if (formData.password.trim() === event.target.value.trim()) {
                 setErrorMessage({ password: "" });
                 setColorInput({ password: 'default' });
@@ -57,74 +57,39 @@ function SignUpInfo({ formData, setFormData }) {
             setErrorMessage({ password: "Hãy nhập mật khẩu vào đây!" })
             setColorInput({ password: 'error' });
         }
-         else {
+        else {
             setErrorMessage({ password: "" });
             setColorInput({ password: 'default' });
         }
     }
     return (
         <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Spacer y={1.5} />
-                <Input rounded bordered color={colorInput.email} css={{ w: "100%" }} labelPlaceholder="Email" required type="email"
+            <Spacer y={1.5} />
+            <div className="form_page_input">
+                <Input rounded bordered color={colorInput.email} css={{ w: "90%" }} labelPlaceholder="Email" required type="email"
                     value={formData.email}
                     onChange={handleEmail}
-                // onChange={(event) =>
-                //     setFormData({ ...formData, email: event.target.value })
-                // }
                 />
-                <Text color="error"> {errorMessage.email} </Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Spacer y={1.5} />
-                <Input.Password css={{ w: "100%" }} labelPlaceholder="Mật khẩu"  status="Secondary" required initialValue="" type="password"
+            </div>
+            <Text color="error"> {errorMessage.email} </Text>
+            <Spacer y={1.5} />
+            <div className="form_page_input">
+                <Input.Password css={{ w: "90%" }} rounded bordered labelPlaceholder="Mật khẩu" status="Secondary" required initialValue="" type="password"
                     value={formData.password}
-                    // onChange={(event) =>
-                    //     setFormData({ ...formData, password: event.target.value })
-                    // }
                     onChange={handlePassword}
                 />
-                <Text color="error"> {errorMessage.password} </Text>
-                <Spacer y={1.5} />
-                <Input.Password css={{ w: "100%" }} labelPlaceholder="Nhập lại mật khẩu" status="Secondary" required initialValue="" type="password"
+            </div>
+            <Text color="error"> {errorMessage.password} </Text>
+            <Spacer y={1.5} />
+            <div className="form_page_input">
+                <Input.Password css={{ w: "90%" }} rounded bordered labelPlaceholder="Nhập lại mật khẩu" status="Secondary" required initialValue="" type="password"
                     value={formData.confirmPassword}
-                    // onChange={(event) =>
-                    //     setFormData({ ...formData, confirmPassword: event.target.value })
-                    // }
                     onChange={handleConfirmPassword}
                 />
-                <Text color="error"> {errorMessage.confirmPassword}</Text>
-            </Form.Group>
+            </div>
+            <Text color="error"> {errorMessage.confirmPassword}</Text>
             <Spacer y={1.5} />
         </Form>
-        // <div className="sign-up-container">
-        //   <input
-        //     type="text"
-        //     placeholder="Email..."
-        //     value={formData.email}
-        //     onChange={(event) =>
-        //       setFormData({ ...formData, email: event.target.value })
-        //     }
-        //   />
-        //   <input
-        //     type="text"
-        //     placeholder="Password..."
-        //     value={formData.password}
-        //     onChange={(event) =>
-        //       setFormData({ ...formData, password: event.target.value })
-        //     }
-        //   />
-        //   <input
-        //     type="text"
-        //     placeholder="Confirm Password..."
-        //     value={formData.confirmPassword}
-        //     onChange={(event) =>
-        //       setFormData({ ...formData, confirmPassword: event.target.value })
-        //     }
-        //   />
-        // </div>
     );
 }
 

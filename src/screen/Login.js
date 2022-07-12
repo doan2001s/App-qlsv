@@ -86,11 +86,13 @@ const Login = () => {
           <Form onSubmit={handleLogin}>
             <Spacer y={1} />
             <div className="form_input">
-              <Input rounded bordered css={{ w: "90%" }} labelPlaceholder="Email" type="email"
+              <Input rounded bordered css={{ w: "90%" }} labelPlaceholder="Email" type="email" style={{ textTransform: 'lowercase' }}
                 onChange={handleEmail}
               />
             </div>
-            <Text color="error"> {errorMessage.email}</Text>
+            <div className="error_mes">
+              <Text color="error"> {errorMessage.email}</Text>
+            </div>
             <Spacer y={2} />
             <div className="form_input">
               <Input.Password rounded bordered css={{ w: "90%" }} labelPlaceholder="Mật khẩu" type="password"
@@ -104,10 +106,10 @@ const Login = () => {
               </Button>
             </div>
           </Form>
-          <hr />
         </div>
+        <hr />
         <div className="form_text">
-          Bạn chưa có tài khoản? <Link to="/form">Đăng ký</Link>
+          Bạn chưa có tài khoản? <Link to="/form"> Đăng ký</Link>
         </div>
       </div>
     </div>
