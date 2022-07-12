@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import './dashboard.css'
+import './Css/dashboard.css'
 import { FaUserGraduate, FaTachometerAlt, FaSignInAlt } from 'react-icons/fa'
 import { IoEyeSharp } from 'react-icons/io5'
-import {ImProfile} from 'react-icons/im'
+import { ImProfile } from 'react-icons/im'
 import { BsPencilSquare, BsArrowDown, BsArrowUp } from 'react-icons/bs'
 import { MdDelete, MdPersonAdd } from 'react-icons/md'
 import { Link, useNavigate } from "react-router-dom";
-import { Table } from "@nextui-org/react";
+import { Table, Modal, Text } from "@nextui-org/react";
+import Avatar from 'react-avatar';
 import { db } from "./firebase";
 import Pagination from './Paginate';
 import { Form, Button } from "react-bootstrap"
-import { collection, getDocs, deleteDoc, onSnapshot, where, query, doc, orderBy } from 'firebase/firestore'
+import { collection, getDocs, deleteDoc, onSnapshot, where, query, doc, orderBy, limit, getDoc } from 'firebase/firestore'
 const Sinhvien = () => {
   const [sinhvien, setSinhvien] = useState([]);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const sinhvienCollectionRel = collection(db, "sinhvien")
   const getSinhvien = async () => {
-    const data = await getDocs(sinhvienCollectionRel);
+    const data = await getDocs(sinhvienCollectionRel, orderBy("tensv"), limit(2));
     setSinhvien(data.docs.map((doc) => ({
       ...doc.data(), id: doc.id
     })));
@@ -46,29 +47,11 @@ const Sinhvien = () => {
         }
       ]
     })
-    // const sinhvienDef = doc(db, "sinhvien", id)
-    // await deleteDoc(sinhvienDef);
-
   }
   const handelLogOut = () => {
     localStorage.clear();
     navigate("/")
   }
-  // const searchRecords = async (e) => {
-  //   e.preventDefault();
-  //   const collectionref = collection(db, "sinhvien");
-  //   const q = query(collectionref,where('tensv').startAt(`%${search}%`).endAt(search+"\uf8ff"))
-  //   // .once("value")
-  //   // const q = query(collectionref, where("tensv", ">=", `${search}`).where("tensv", "<", `${search}`) + "\uf8ff").get();
-  //   const unsub = onSnapshot(q, (snapshot) =>
-  //     setSinhvien(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, key: doc.id })))
-  //   );
-  //   console.log("sinhvien", sinhvien);
-  //   return (unsub);
-  // }
-  //   const searchRecords  = (data) => {
-  //     return data.filter((sinhvien) =>  sinhvien.tensv.toLowerCase().includes(query) );
-  // }
   const clickHoc = async (e) => {
     console.log("clickHoc")
     e.preventDefault();
@@ -79,7 +62,6 @@ const Sinhvien = () => {
 
     );
     return (unsub1)
-    // return ();
   }
   const clickXong = async (e) => {
     e.preventDefault();
@@ -91,9 +73,6 @@ const Sinhvien = () => {
     console.log("sinhvien", sinhvien);
     return (Xong);
   }
-  console.log(sinhvien)
-  // sort by 
-  // const [sortby, setSortBy] = useState('');
   const handleUp = async (e) => {
     e.preventDefault();
     const collectionSort = collection(db, "sinhvien");
@@ -114,25 +93,47 @@ const Sinhvien = () => {
     console.log("sinhvien", sinhvien);
     return (SortDow);
   }
-  // paginate
-  // const [number, setNumber] = useState(1); // No of pages
-  // const postPerPage = 2;
-  // const lastPost = number * postPerPage;
-  // const firstPost = lastPost - postPerPage;
-  // const currentPost = sinhvien.slice(firstPost, lastPost);
-  // console.log(currentPost)
-  // const PageCount = Math.ceil(sinhvien.length / postPerPage);
-  // const ChangePage = ({ selected }) => {
-  //   setNumber(selected);
-  // };
   const [currentPage, setCurrentPage] = useState(1);
-  const [todosPerPage] = useState(2);
+  const todosPerPage = 5;
   const indexOfLastTodo = currentPage * todosPerPage;
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = sinhvien.slice(indexOfFirstTodo, indexOfLastTodo);
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  //
+  const [masv, setMa] = useState('');
+  const [tensv, setTen] = useState('');
+  const [email, setEmail] = useState('');
+  const [trangthai, setTrangthai] = useState('');
+  const [diachi, setDiachi] = useState('');
+  const [khoa, setKhoa] = useState('');
+  const [sdt, setSdt] = useState('');
+  const [ngaysinh, setNgaysinh] = useState('');
+  const [lop, setLop] = useState('');
+  const [img, setImg] = useState(null);
+  const [visible, setVisible] = React.useState(false);
+  const handleModel = async (id) => {
+    setVisible(true);
+    const sinhvien = await getDoc(doc(db, "sinhvien", id))
+    if (sinhvien.exists()) {
+      setMa(sinhvien.data().masv)
+      setTen(sinhvien.data().tensv)
+      setKhoa(sinhvien.data().khoa)
+      setTrangthai(sinhvien.data().trangthai)
+      setEmail(sinhvien.data().email)
+      setDiachi(sinhvien.data().diachi)
+      setLop(sinhvien.data().lop)
+      setNgaysinh(sinhvien.data().ngaysinh)
+      setSdt(sinhvien.data().sdt)
+      setImg(sinhvien.data().img)
+    } else {
 
+    }
 
+  }
+  const closeHandler = () => {
+    setVisible(false);
+    console.log("closed");
+  };
   return (
     <div className="body">
       <div className='main_left'>
@@ -146,7 +147,11 @@ const Sinhvien = () => {
             <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
             <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>Đăng xuất</li>
+            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+              <button className="buttonLog" onClick={handelLogOut}>
+                Đăng xuất
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -195,7 +200,7 @@ const Sinhvien = () => {
               <div className="input2">
                 <label>Trạng thái:</label>
                 <div><Button onClick={clickHoc}>Đang học</Button></div>
-                <div> <Button onClick={clickXong}>Đã tốt nghiệp</Button></div>
+                <div><Button onClick={clickXong}>Đã tốt nghiệp</Button></div>
               </div>
             </div>
           </Form>
@@ -206,6 +211,10 @@ const Sinhvien = () => {
             </select>
           </div> */}
         </div>
+        <div className="change_list">
+                    <Link to="/sinhvien"><Button>Xem sinh viên theo dạng danh sách</Button></Link>
+                    <Link to="/gridview"><Button>Xem sinh viên theo dạng bảng</Button></Link>
+                </div>
         <div className="list_sv">
           <Table
             aria-label="Example table with static content"
@@ -213,13 +222,14 @@ const Sinhvien = () => {
               height: "auto",
               minWidth: "100%",
               zIndex: "0",
+              boxShadow:"1px 2px 10px 1px #888888"
             }}
           >
             <Table.Header>
               <Table.Column>STT</Table.Column>
               <Table.Column>SINH VIÊN</Table.Column>
               <Table.Column style={{ display: 'flex', alignItems: 'center' }}>MÃ SINH VIÊN
-                <button  onClick={handleDow}><BsArrowDown size={18} /></button>
+                <button onClick={handleDow}><BsArrowDown size={18} /></button>
                 <button onClick={handleUp}><BsArrowUp size={18} /></button>
               </Table.Column>
               {/* <Table.Column>LỚP</Table.Column> */}
@@ -240,16 +250,17 @@ const Sinhvien = () => {
                 return (
                   <Table.Row key={sinhvien.id} >
                     <Table.Cell>{i + 1}</Table.Cell>
-                    <Table.Cell>{sinhvien.tensv}</Table.Cell>
+                    <Table.Cell>{sinhvien.tensv}
+                    </Table.Cell>
                     <Table.Cell>{sinhvien.masv}</Table.Cell>
                     {/* <Table.Cell>{sinhvien.lop}</Table.Cell> */}
                     <Table.Cell>{sinhvien.trangthai}</Table.Cell>
                     <Table.Cell>
                       <div style={{ display: 'flex' }}>
-                      {/* <IoEyeSharp size={22} color="silver" /> */}
-                        <Link to={`/view/${sinhvien.id}`}>
+
+                        <button className="button1" onClick={(e) => handleModel(sinhvien.id)}>
                           <IoEyeSharp size={22} color="silver" />
-                        </Link>
+                        </button>
                         <Link to={`/edit/${sinhvien.id}`}>
                           <BsPencilSquare size={22} color="silver" />
                         </Link>
@@ -261,17 +272,44 @@ const Sinhvien = () => {
               })}
             </Table.Body>
           </Table>
+          <Modal
+            closeButton
+            width="600px"
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description"
+            open={visible}
+            onClose={closeHandler}
+          >
+            <Modal.Header>
+              <Text b size={18}>
+                Thông tin sinh viên
+              </Text>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="modal_detail">
+                <Avatar
+                  size={150}
+                  src={img} />
+                <div className="modal_tail">
+                  <h5>Họ tên: {tensv}</h5>
+                  <p>Khoa: {khoa}</p>
+                  <p>Lớp: {lop}</p>
+                  <p>Mã sinh viên: {masv}</p>
+                  <p>Ngày sinh: {ngaysinh}</p>
+                  <p>Email: {email}</p>
+                  <p>Số điện thoại: {sdt}</p>
+                  <p>Địa chỉ: {diachi}</p>
+                  <p>Trạng thái: <span style={{ color: 'red' }}>{trangthai}</span></p>
+                </div>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button auto flat color="error" onClick={closeHandler}>
+                Đóng
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <div className="div_pagin">
-            {/* <ReactPaginate
-              previousLabel={"Previous"}
-              nextLabel={"Next"}
-              pageCount={PageCount}
-              onPageChange={ChangePage}
-              containerClassName={"paginationBttns"}
-              activeClassName={"paginationActive"}
-              marginPagesDisplayed={4}
-              pageRangeDisplayed={4}
-            ></ReactPaginate> */}
             <Pagination
               todosPerPage={todosPerPage}
               totalTodos={sinhvien.length}

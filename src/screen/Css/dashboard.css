@@ -5,7 +5,8 @@
 .main_left{
     width: 250px;
     height: 600px;
-    background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+    background: black;
+    /* background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25)); */
     margin-top: 15px;
     margin-left: 15px;
     float: left;
@@ -149,9 +150,10 @@ background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
   justify-content: space-between;
 }
 .list_sv{
-  padding-top: 5px;
+  padding-top: 15px;
   width: 950px;
   margin: auto;
+  
 }
 .pagin{
   margin: 0px 290px 0px 290px;
@@ -211,4 +213,26 @@ button{
 .button1{
   border: none;
   background-color: white;
+}
+.logout{
+  color: white;
+  background: black;
+}
+.buttonLog{
+  background: none;
+  color: white;
+}
+.modal_detail{
+  display: flex;
+  justify-content: space-around;
+}
+.modal_tail{
+  display: grid;
+}
+.change_list{
+  display: flex;
+  justify-content: space-around;
+  width: 665px;
+  justify-content: space-around;
+  margin-left: 50px;
 }

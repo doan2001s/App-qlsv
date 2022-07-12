@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Link,useNavigate} from "react-router-dom";
 import { Form,Button } from "react-bootstrap";
-// import { Button } from "react-bootstrap";
-
 import { Input,Spacer} from "@nextui-org/react";
 import { db } from "./firebase";
 import { collection, addDoc,getDocs, where,query} from 'firebase/firestore';
-import './Auth.css';
+import './Css/Auth.css';
 const SignUp= () => {
   const [user,setUsername] = useState("");
   const [email,setEmail] = useState("");

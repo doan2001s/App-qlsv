@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "./firebase";
-import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { getDoc, doc,} from 'firebase/firestore'
 import { FaUserGraduate, FaTachometerAlt, FaSignInAlt } from 'react-icons/fa'
+import { ImProfile } from 'react-icons/im'
 import { Link, } from "react-router-dom";
-import './View.css'
+import './Css/View.css'
 
 const View = () => {
     //logout
@@ -23,12 +24,12 @@ const View = () => {
     const [lop, setLop] = useState('');
     const navigate = useNavigate();
     const { id } = useParams();
-    const view = async (e) => {
-        e.preventDefault();
-        const sinhvien = doc(db, "sinhvien", id)
-        const data = { masv: masv, tensv: tensv, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa }
-        updateDoc(sinhvien, data)
-    }
+    // const view = async (e) => {
+    //     e.preventDefault();
+    //     const sinhvien = doc(db, "sinhvien", id)
+    //     const data = { masv: masv, tensv: tensv, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa }
+    //     updateDoc(sinhvien, data)
+    // }
     const getSinhvien = async (id) => {
         const sinhvien = await getDoc(doc(db, "sinhvien", id))
         if (sinhvien.exists()) {
@@ -48,7 +49,7 @@ const View = () => {
 
     useEffect(() => {
         getSinhvien(id)
-    },[])
+    }, [])
     return (
         <div className="body">
             <div className='main_left'>
@@ -60,9 +61,12 @@ const View = () => {
                     <ul>
                         <li className='li'><div className='icon'><FaTachometerAlt size={22} /></div><Link to="/home">Quản lý</Link></li>
                         <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
-                        {/* <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/edit">Tiểu sử</Link></li>
-                        <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                        <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>Đăng xuất</li>
+                        <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                        {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
+                        <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+                            <button className="buttonLog" onClick={handelLogOut}>
+                                Đăng xuất
+                            </button></li>
                     </ul>
                 </div>
             </div>

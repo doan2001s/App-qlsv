@@ -1,0 +1,41 @@
+.gridview {
+    background-color: white;
+    padding-top: 10px;
+    width: 950px;
+    margin: auto;
+    height: 500px;
+    /* display: flex; */
+    height: 241px;
+    justify-content: space-around;
+}
+
+.card_sv {
+    width: 415px;
+    background-color: white;
+    box-shadow: 1px 2px 10px 1px #888888;
+    display: flex;
+    float: left;
+    margin-right: 50px;
+    margin-top: 40px;
+    height: 250px;
+}
+
+.pagin_sv {
+    width: 900px;
+    margin: auto;
+    padding-top: 20px;
+    float: left;
+}
+
+.paginate {
+    display: flex;
+    justify-content: center;
+}
+
+.card_sv1 {
+    display: flex;
+}
+.grid_view{
+    margin-top: 20px;
+    margin-left: 20px;
+}
