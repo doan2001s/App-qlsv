@@ -413,7 +413,7 @@
         display: flex;
     }
 }
-@media screen and (min-width:550px)
+@media screen and (min-width:350px)
 and (max-width:1200px){
     .mr_mid2 {
         justify-content: center;
