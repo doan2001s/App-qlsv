@@ -260,10 +260,9 @@ const Profile = () => {
                                     <strong>Thông tin khác: {profile.mota}</strong>
                                 </div>
                                 <Modal
-                                    scroll
                                     closeButton
-                                    width="600px"
                                     aria-labelledby="modal-title"
+                                    aria-describedby="modal-description"
                                     open={visible}
                                     onClose={closeHandler}
                                 >
