@@ -71,7 +71,9 @@ function SignUpInfo({ formData, setFormData }) {
                     onChange={handleEmail}
                 />
             </div>
-            <Text color="error"> {errorMessage.email} </Text>
+            <div className="error_mes">
+                <Text color="error"> {errorMessage.email}</Text>
+            </div>
             <Spacer y={1.5} />
             <div className="form_page_input">
                 <Input.Password css={{ w: "90%" }} rounded bordered labelPlaceholder="Mật khẩu" status="Secondary" required initialValue="" type="password"
@@ -79,7 +81,9 @@ function SignUpInfo({ formData, setFormData }) {
                     onChange={handlePassword}
                 />
             </div>
-            <Text color="error"> {errorMessage.password} </Text>
+            <div className="error_mes">
+                <Text color="error"> {errorMessage.password} </Text>
+            </div>
             <Spacer y={1.5} />
             <div className="form_page_input">
                 <Input.Password css={{ w: "90%" }} rounded bordered labelPlaceholder="Nhập lại mật khẩu" status="Secondary" required initialValue="" type="password"
@@ -87,7 +91,9 @@ function SignUpInfo({ formData, setFormData }) {
                     onChange={handleConfirmPassword}
                 />
             </div>
-            <Text color="error"> {errorMessage.confirmPassword}</Text>
+            <div className="error_mes">
+                <Text color="error"> {errorMessage.confirmPassword}</Text>
+            </div>
             <Spacer y={1.5} />
         </Form>
     );

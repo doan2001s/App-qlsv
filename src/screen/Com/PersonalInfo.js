@@ -46,7 +46,9 @@ function PersonalInfo({ formData, setFormData, }) {
           onChange={handleHoten}
         />
       </div>
-      <Text color="error"> {errorMessage.hoten} </Text>
+      <div className="error_mes">
+        <Text color="error"> {errorMessage.hoten} </Text>
+      </div>
       <Spacer y={1.5} />
       <div className="form_page_input">
         <Input rounded bordered css={{ w: "90%" }} labelPlaceholder="Số điện thoại" type="number"
@@ -61,7 +63,9 @@ function PersonalInfo({ formData, setFormData, }) {
           onChange={handleDiachi}
         />
       </div>
-      <Text color="error"> {errorMessage.diachi} </Text>
+      <div className="error_mes">
+        <Text color="error"> {errorMessage.diachi} </Text>
+      </div>
       <Spacer y={1.5} />
     </Form>
   );
