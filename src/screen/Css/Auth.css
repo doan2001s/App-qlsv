@@ -77,3 +77,60 @@ and (max-width:414px)
     margin-left: 20px;
   }
 }
+@media screen and (min-width: 768px)
+and  (max-width: 820px){
+  .FormPage {
+    width: 700px;
+    height: 400px;
+    margin: auto;
+    margin-top: 100px;
+  }
+  .button_submit {
+    display: flex;
+    width: 700px;
+    justify-content: center;
+  }
+  .error_mes{
+    margin-left: 20px;
+  }
+}
+@media screen and (min-width: 665px)
+and  (max-width: 667px) {
+  .FormPage {
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    /* margin-top: 50px; */
+  }
+}
+@media screen and (min-width: 810px)
+and  (max-width: 1200px) {
+  .FormPage {
+    width: 700px;
+    height: 400px;
+    margin: auto;
+    margin-top: 10px;
+    /* margin-top: 50px; */
+  }
+  .button_submit {
+    display: flex;
+    width: 700px;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 500px)
+and  (max-width: 750px)
+{
+  .FormPage {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    margin-top: 10px;
+    /* margin-top: 50px; */
+  }
+  .button_submit {
+    display: flex;
+    width: 400px;
+    justify-content: center;
+  }
+}
