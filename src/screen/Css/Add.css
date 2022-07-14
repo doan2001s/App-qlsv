@@ -175,7 +175,7 @@ and (max-width:1200px)
 
     .div_button {
         height: 100px;
-        display: flex;
+        /* display: flex; */
         width: 100%;
     }
 
