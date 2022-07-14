@@ -112,7 +112,7 @@
         background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
         color: white;
         border-radius: 0.5rem;
-        width: 360px;
+        width: 340px;
         margin: auto;
     }
 
@@ -123,7 +123,7 @@
 
     .container_detailSV1 {
         z-index: 0;
-        width: 360px;
+        width: 340px;
         height: 1140px;
         padding-top: 20px;
         margin: auto;
@@ -134,16 +134,16 @@
 
     .form_container2 {
         display: block;
-        width: 380px;
+        width: 340px;
     }
 
     .div_input1 {
-        width: 350px;
+        width: 320px;
         margin-left: 7px;
     }
 
     .div_input2 {
-        width: 350px;
+        width: 320px;
         margin-left: 7px;
     }
 
