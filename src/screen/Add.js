@@ -90,7 +90,7 @@ const Add = () => {
         setEmail(event.target.value)
         const ergx = /[a-zA-Z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
         if (ergx.test(email)) {
-            setErrorMessage({ email: "Email hop le" })
+            setErrorMessage({ email: "" })
             setColorInput({ email: 'error' });
         } else if (!ergx.test(email) && email !== "") {
             setErrorMessage({ email: "Email của bạn phải có kiểu doan@gmail.com!" });
@@ -325,8 +325,8 @@ const Add = () => {
                                 />
                                 <Text color="error">{errorMessage.email}</Text>
                                 <Spacer y={2} />
-                                <Input color={colorInput.sdt} clearable bordered labelPlaceholder="Số điện thoại" required
-                                    onChange={handleSdt}
+                                <Input color={colorInput.sdt} clearable bordered labelPlaceholder="Số điện thoại" required type="number"
+                                    onChange={handleSdt} 
                                 // onChange={(event) => { setSdt(event.target.value); }}
                                 />
                                 <Text color="error">{errorMessage.sdt}</Text>
