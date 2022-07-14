@@ -136,5 +136,8 @@ and  (max-width: 800px)
     width: 400px;
     justify-content: center;
   }
+  .error_mes{
+    margin-left: 20px;
+  }
 
 }
