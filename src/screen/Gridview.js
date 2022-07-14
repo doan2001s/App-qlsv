@@ -192,7 +192,7 @@ const Gridview = () => {
                     </div>
                 </div>
                 <div className="search">
-                    <Form>
+                    <Form className="From_text">
                         <div className="form">
                             <div className="input">
                                 {/* <Form.Control className="t_input" type="text" placeholder="Tìm kiếm ..."

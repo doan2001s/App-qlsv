@@ -171,3 +171,28 @@
         width: 270px;
     }
 }
+@media screen and (min-width:550px)
+and (max-width:1200px)
+{
+    .gridview {
+        width: 100%;
+        display: grid;
+        height: 200%;
+    }
+
+    .card_sv {
+        /* margin: auto; */
+        /* height: 300px;
+        width: 80%;
+        float: left; */
+    }
+
+    .pagin_sv {
+        display: flex;
+        width: 100%;
+    }
+    .paginate{
+        height: 100px;
+        width: 100%;
+    }
+}
