@@ -4,11 +4,11 @@ import { ImProfile } from 'react-icons/im'
 import Pagination from './Paginate';
 import { IoEyeSharp } from 'react-icons/io5'
 import { Link, useNavigate } from "react-router-dom";
-import { BsPencilSquare, } from 'react-icons/bs'
+import { BsPencilSquare, BsList,BsTable } from 'react-icons/bs'
 import { db } from './firebase'
-import { collection, getDocs, where, query, onSnapshot, doc, deleteDoc,getDoc } from 'firebase/firestore'
+import { collection, getDocs, where, query, onSnapshot, doc, deleteDoc, getDoc } from 'firebase/firestore'
 import { MdPersonAdd, MdDelete } from 'react-icons/md'
-import {Modal ,Text} from '@nextui-org/react'
+import { Modal, Text,Spacer } from '@nextui-org/react'
 import './Css/Gridview.css'
 import { Form, Button, } from "react-bootstrap"
 import { confirmAlert } from 'react-confirm-alert';
@@ -93,29 +93,33 @@ const Gridview = () => {
     const [img, setImg] = useState(null);
     const [visible, setVisible] = React.useState(false);
     const handleModel = async (id) => {
-      setVisible(true);
-      const sinhvien = await getDoc(doc(db, "sinhvien", id))
-      if (sinhvien.exists()) {
-        setMa(sinhvien.data().masv)
-        setTen(sinhvien.data().tensv)
-        setKhoa(sinhvien.data().khoa)
-        setTrangthai(sinhvien.data().trangthai)
-        setEmail(sinhvien.data().email)
-        setDiachi(sinhvien.data().diachi)
-        setLop(sinhvien.data().lop)
-        setNgaysinh(sinhvien.data().ngaysinh)
-        setSdt(sinhvien.data().sdt)
-        setImg(sinhvien.data().img)
-      } else {
-  
-      }
-  
+        setVisible(true);
+        const sinhvien = await getDoc(doc(db, "sinhvien", id))
+        if (sinhvien.exists()) {
+            setMa(sinhvien.data().masv)
+            setTen(sinhvien.data().tensv)
+            setKhoa(sinhvien.data().khoa)
+            setTrangthai(sinhvien.data().trangthai)
+            setEmail(sinhvien.data().email)
+            setDiachi(sinhvien.data().diachi)
+            setLop(sinhvien.data().lop)
+            setNgaysinh(sinhvien.data().ngaysinh)
+            setSdt(sinhvien.data().sdt)
+            setImg(sinhvien.data().img)
+        } else {
+
+        }
+
     }
     const closeHandler = () => {
-      setVisible(false);
-      console.log("closed");
+        setVisible(false);
+        console.log("closed");
     };
+    const [menu, setMenu] = useState(false);
 
+    const showMenu = () => {
+        setMenu(!menu)
+    }
     return (
         <div className="body">
             <div className='main_left'>
@@ -150,6 +154,9 @@ const Gridview = () => {
                                 <h6 className='ql_h6'>Sinh viên</h6>
                             </div>
                         </div>
+                        <div className="menu_show">
+                            <BsList size={25} onClick={showMenu} />
+                        </div>
                         <div className='right_2_icon'>
                             <div className='icon_2'>
                                 <h6>Hello, {localStorage.getItem("email")}</h6>
@@ -159,6 +166,21 @@ const Gridview = () => {
                   <Link to="/"><IoNotificationsCircle color='silver' size={30} /></Link>
                 </div> */}
                         </div>
+                    </div>
+                </div>
+                <div className={menu? "responship_menu":"responship_menu_block"}>
+                    <div id="menu">
+                        <ul>
+                            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
+                            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                            <li className="li"><div className="icon"><BsTable/></div>Thời khóa biểu</li>
+                            {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+                                <button className="buttonLog" onClick={handelLogOut}>
+                                    Đăng xuất
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mr_mid">
@@ -180,7 +202,9 @@ const Gridview = () => {
                             </div>
                             <div className="input2">
                                 <label>Trạng thái:</label>
+                                <Spacer y = {0.2}/>
                                 <div><Button onClick={clickHoc}>Đang học</Button></div>
+                                <Spacer y = {0.5}/>
                                 <div><Button onClick={clickXong}>Đã tốt nghiệp</Button></div>
                             </div>
                         </div>
@@ -188,6 +212,7 @@ const Gridview = () => {
                 </div>
                 <div className="change_list">
                     <Link to="/sinhvien"><Button>Xem sinh viên theo dạng bảng</Button></Link>
+                    
                     <Link to="/gridview"><Button>Xem sinh viên theo dạng lưới</Button></Link>
                 </div>
                 <div className="gridview">
@@ -247,42 +272,42 @@ const Gridview = () => {
                 </div>
             </div>
             <Modal
-            closeButton
-            width="600px"
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-            open={visible}
-            onClose={closeHandler}
-          >
-            <Modal.Header>
-              <Text b size={18}>
-                Thông tin sinh viên
-              </Text>
-            </Modal.Header>
-            <Modal.Body>
-              <div className="modal_detail">
-                <Avatar
-                  size={150}
-                  src={img} />
-                <div className="modal_tail">
-                  <h5>Họ tên: {tensv}</h5>
-                  <p>Khoa: {khoa}</p>
-                  <p>Lớp: {lop}</p>
-                  <p>Mã sinh viên: {masv}</p>
-                  <p>Ngày sinh: {ngaysinh}</p>
-                  <p>Email: {email}</p>
-                  <p>Số điện thoại: {sdt}</p>
-                  <p>Địa chỉ: {diachi}</p>
-                  <p>Trạng thái: <span style={{ color: 'red' }}>{trangthai}</span></p>
-                </div>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button auto flat color="error" onClick={closeHandler}>
-                Đóng
-              </Button>
-            </Modal.Footer>
-          </Modal>
+                closeButton
+                width="600px"
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+                open={visible}
+                onClose={closeHandler}
+            >
+                <Modal.Header>
+                    <Text b size={18}>
+                        Thông tin sinh viên
+                    </Text>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_detail">
+                        <Avatar
+                            size={150}
+                            src={img} />
+                        <div className="modal_tail">
+                            <h5>Họ tên: {tensv}</h5>
+                            <p>Khoa: {khoa}</p>
+                            <p>Lớp: {lop}</p>
+                            <p>Mã sinh viên: {masv}</p>
+                            <p>Ngày sinh: {ngaysinh}</p>
+                            <p>Email: {email}</p>
+                            <p>Số điện thoại: {sdt}</p>
+                            <p>Địa chỉ: {diachi}</p>
+                            <p>Trạng thái: <span style={{ color: 'red' }}>{trangthai}</span></p>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button auto flat color="error" onClick={closeHandler}>
+                        Đóng
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
 }

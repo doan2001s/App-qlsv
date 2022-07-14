@@ -35,7 +35,139 @@
 .card_sv1 {
     display: flex;
 }
-.grid_view{
+
+.grid_view {
     margin-top: 20px;
     margin-left: 20px;
+}
+
+@media screen and (min-width: 395px) and (max-width:414px) {
+    .gridview {
+        width: 414px;
+    }
+
+    .card_sv {
+        width: 390px;
+        margin-left: 13px;
+    }
+
+    .pagin_sv {
+        width: 414px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 375px) and (min-width: 360px) {
+    .gridview {
+        width: 350px;
+    }
+
+    .card_sv {
+        width: 340px;
+        margin-left: 4px;
+    }
+
+    .pagin_sv {
+        width: 350px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 320px) and (min-width: 310px) {
+    .gridview {
+        width: 280px;
+    }
+
+    .card_sv {
+        height: 350px;
+        width: 280px;
+        margin-left: 4px;
+    }
+
+    .pagin_sv {
+        width: 280px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 390px) and (min-width:380px) {
+    .gridview {
+        width: 280px;
+    }
+
+    .card_sv {
+        height: 350px;
+        width: 280px;
+        margin-left: 4px;
+    }
+
+    .pagin_sv {
+        width: 380px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 395px) and (min-width:390px) {
+    .gridview {
+        width: 380px;
+    }
+
+    .card_sv {
+        /* height: 80px; */
+        width: 375px;
+        margin-left: 5px;
+    }
+
+    .pagin_sv {
+        width: 380px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width:825px) and (min-width:800px) {
+    .gridview {
+        width: 800px;
+    }
+
+    .card_sv {
+        /* height: 80px; */
+        width: 355px;
+        margin-left: 25px;
+        margin-right: 5px;
+    }
+
+    .pagin_sv {
+        width: 800px;
+    }
+    .paginate{
+        height: 100px;
+    }
+}
+@media screen and (max-width:280px) and (min-width:260px){
+    .gridview {
+        width: 270px;
+    }
+
+    .card_sv {
+        height: 350px;
+        width: 270px;
+    }
+
+    .pagin_sv {
+        width: 270px;
+    }
+    .paginate{
+        height: 100px;
+        width: 270px;
+    }
 }

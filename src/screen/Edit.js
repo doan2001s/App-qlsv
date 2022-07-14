@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "./firebase";
 import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { BsList, BsTable } from 'react-icons/bs'
 import { FaUserGraduate, FaSignInAlt } from 'react-icons/fa'
 import { Link, } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
@@ -159,7 +160,7 @@ const Edit = () => {
                             const sinhvien = doc(db, "sinhvien", id)
                             const data = { masv: masv, tensv: tensv, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa }
                             updateDoc(sinhvien, data)
-                            navigate("/sinhvien")
+                            navigate("/gridview")
                             alert("Cập nhật thành công")
                         }
 
@@ -197,6 +198,10 @@ const Edit = () => {
     useEffect(() => {
         getSinhvien(id)
     }, [])
+    const [menu, setMenu] = useState(false);
+    const showMenu = () => {
+        setMenu(!menu)
+    }
     return (
         <div className="body">
             <div className='main_left'>
@@ -231,6 +236,9 @@ const Edit = () => {
                 <h6 className='ql_h6'>Sinh viên</h6>
               </div> */}
                         </div>
+                        <div className="menu_show">
+                            <BsList size={25} onClick={showMenu} />
+                        </div>
                         <div className='right_2_icon'>
                             <div className='icon_2'>
                                 <h6>Hello, {localStorage.getItem("email")}</h6>
@@ -239,6 +247,21 @@ const Edit = () => {
                 <Link to="/"><IoNotificationsCircle color='silver' size={30} /></Link>
               </div> */}
                         </div>
+                    </div>
+                </div>
+                <div className={menu ? "responship_menu" : "responship_menu_block"}>
+                    <div id="menu">
+                        <ul>
+                            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
+                            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                            <li className="li"><div className="icon"><BsTable /></div>Thời khóa biểu</li>
+                            {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+                                <button className="buttonLog" onClick={handelLogOut}>
+                                    Đăng xuất
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mr_mid2">
@@ -250,7 +273,7 @@ const Edit = () => {
                     </div>
                 </div>
                 <div className="container_detailSV1">
-                    <div>
+                    <div className="detailSV1_img">
                         <Avatar
                             size={150}
                             src={img} />
@@ -258,8 +281,8 @@ const Edit = () => {
                     <div>
                         <Form >
                             <Spacer y={2} />
-                            <div className='form_container'>
-                                <div className='div_input'>
+                            <div className='form_container2'>
+                                <div className='div_input1'>
                                     <Input clearable bordered labelPlaceholder="Mã sinh viên" type="text" disabled
                                         value={masv} />
                                     <Spacer y={2} />
@@ -273,7 +296,7 @@ const Edit = () => {
                                     <Spacer y={2} />
 
                                 </div>
-                                <div className='div_input'>
+                                <div className='div_input1'>
                                     <Input color={colorInput.ngaysinh} clearable bordered labelPlaceholder="Ngày sinh" required
                                         onChange={handleNgaysinh} value={ngaysinh} type="date" />
                                     <Text>{errorMessage.ngaysinh}</Text>

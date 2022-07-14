@@ -6,14 +6,13 @@ import { IoMail } from 'react-icons/io5'
 import { BsFillPencilFill } from 'react-icons/bs'
 import { Link, useNavigate, } from "react-router-dom";
 import "./Css/profile.css"
-import { Avatar, Button, Modal, Text, Input, Spacer } from '@nextui-org/react'
+import { Button, Modal, Text, Input, Spacer } from '@nextui-org/react'
+import Avatar from 'react-avatar';
 import { db, storage } from './firebase'
 import { collection, where, query, onSnapshot, getDocs, getDoc, doc, updateDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { confirmAlert } from 'react-confirm-alert';
 import { isEmpty } from 'validator'
-import { async } from "@firebase/util";
-import { set } from "react-hook-form";
+import { BsList, BsTable } from 'react-icons/bs'
 const Profile = () => {
 
     const navigate = useNavigate()
@@ -146,13 +145,16 @@ const Profile = () => {
         }
     }
     const update = async (id) => {
-        const user = doc(db,"user",id)
-        const updateUser = {hoten:hoten,diachi:diachi,sdt:sdt,mota:mota,...data}
-        updateDoc(user,updateUser)
+        const user = doc(db, "user", id)
+        const updateUser = { hoten: hoten, diachi: diachi, sdt: sdt, mota: mota, ...data }
+        updateDoc(user, updateUser)
         // console.log(user)
         alert("Cập nhật thành công")
     }
-
+    const [menu, setMenu] = useState(false);
+    const showMenu = () => {
+        setMenu(!menu)
+    }
     return (
         <div className="body">
             <div className='main_left'>
@@ -187,11 +189,29 @@ const Profile = () => {
                                 <h6 className='ql_h6'>Tiểu sử</h6>
                             </div>
                         </div>
+                        <div className="menu_show">
+                            <BsList size={25} onClick={showMenu} />
+                        </div>
                         <div className='right_2_icon'>
                             <div className='icon_2'>
                                 <h6>Hello, {localStorage.getItem("email")}</h6>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className={menu ? "responship_menu" : "responship_menu_block"}>
+                    <div id="menu">
+                        <ul>
+                            <li className='li'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
+                            <li className='active'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                            <li className="li"><div className="icon"><BsTable /></div>Thời khóa biểu</li>
+                            {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+                                <button className="buttonLog" onClick={handelLogOut}>
+                                    Đăng xuất
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mr_content">
@@ -202,12 +222,8 @@ const Profile = () => {
                                     <div className="img_detail">
                                         <div className="img">
                                             <Avatar
-                                                size="xl"
-                                                color="gradient"
-                                                textColor="white"
-                                                bordered
-                                                src={profile.img}
-                                            />
+                                                size={70}
+                                                src={profile.img} />
                                         </div>
                                     </div>
                                     <div className="detail">
@@ -244,6 +260,7 @@ const Profile = () => {
                                     <strong>Thông tin khác: {profile.mota}</strong>
                                 </div>
                                 <Modal
+                                    scroll
                                     closeButton
                                     width="600px"
                                     aria-labelledby="modal-title"
@@ -257,7 +274,7 @@ const Profile = () => {
                                     </Modal.Header>
                                     <Modal.Body>
                                         <Spacer y={1} />
-                                        <Input clearable bordered labelPlaceholder="Email " type="email" required
+                                        <Input clearable bordered labelPlaceholder="Email " type="email" required disabled
                                             value={email}
                                         // onChange={(event) => { setMa(event.target.value); }}
                                         />

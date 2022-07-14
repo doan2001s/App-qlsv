@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Css/Add.css'
 import { FaUserGraduate, FaTachometerAlt, FaSignInAlt, } from 'react-icons/fa'
+import {BsList,BsTable } from 'react-icons/bs'
 import { ImProfile, } from 'react-icons/im'
 import { Link } from 'react-router-dom';
 import { Input, Spacer, Button, Grid, Text } from "@nextui-org/react";
@@ -176,6 +177,7 @@ const Add = () => {
                     const add = await addDoc(sinhvienCollectionRel, { masv: masv, tensv: ten, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa,...data })
                     if (add) {
                         alert("Thêm sinh viên thành công")
+                        navigate("/gridview")
                     }
                 }
                 else {
@@ -216,6 +218,11 @@ const Add = () => {
         }
         file && uploadFile()
     }, [file])
+    const [menu, setMenu] = useState(false);
+
+    const showMenu = () => {
+        setMenu(!menu)
+    }
     return (
         <div className="body">
             <div className='main_left'>
@@ -250,6 +257,9 @@ const Add = () => {
                                 <h6 className='ql_h6'>Thêm sinh viên</h6>
                             </div>
                         </div>
+                        <div className="menu_show">
+                            <BsList size={25} onClick={showMenu} />
+                        </div>
                         <div className='right_2_icon'>
                             <div className='icon_2'>
                                 <h6>Hello, {localStorage.getItem("email")}</h6>
@@ -258,6 +268,21 @@ const Add = () => {
                                 <Link to="/"><IoNotificationsCircle color='silver' size={30} /></Link>
                             </div> */}
                         </div>
+                    </div>
+                </div>
+                <div className={menu? "responship_menu":"responship_menu_block"}>
+                    <div id="menu">
+                        <ul>
+                            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
+                            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                            <li className="li"><div className="icon"><BsTable/></div>Thời khóa biểu</li>
+                            {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
+                                <button className="buttonLog" onClick={handelLogOut}>
+                                    Đăng xuất
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mr_mid">
@@ -269,7 +294,7 @@ const Add = () => {
                     </div>
                 </div>
                 <div className="list_add">
-                    <Form onSubmit={createSinhvien}>
+                    <Form style={{zIndex:0,}} onSubmit={createSinhvien}>
                         <Spacer y={2} />
                         <div className='form_container'>
                             <div className='div_input'>
@@ -292,6 +317,7 @@ const Add = () => {
                                     type="date" />
                                 <Text color="error"> {errorMessage.ngaysinh}</Text>
                             </div>
+                            <Spacer y={2} />
                             <div className='div_input'>
                                 <Input color={colorInput.email} clearable bordered labelPlaceholder="Email" type="email" required
                                     // onChange={(event) => { setEmail(event.target.value); }}
@@ -311,6 +337,7 @@ const Add = () => {
                                 />
                                 <Text color="error">{errorMessage.diachi}</Text>
                             </div>
+                            <Spacer y={2} />
                             <div className='div_input'>
                                 <Input color={colorInput.lop} clearable bordered labelPlaceholder="Lớp" style={{ textTransform: 'uppercase' }} required
                                     // onChange={(event) => { setLop(event.target.value); }}

@@ -60,7 +60,7 @@ const Login = () => {
           alert("Tài khoản mật khẩu chính xác");
           localStorage.setItem("email", email)
           checkresul = false;
-          navigate(`/sinhvien`)
+          navigate(`/gridview`)
         }
         else {
           checkresul = true;
