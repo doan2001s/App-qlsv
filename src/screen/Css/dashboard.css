@@ -940,7 +940,7 @@ and (max-width:1200px)
     margin-top: 66px;
     margin-left: 5px;
     border-radius: 19px;
-    width: 270px;
+    width: 97%;
     position: fixed;
     background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
     z-index: 99;
@@ -951,7 +951,7 @@ and (max-width:1200px)
     margin-left: 20px;
     align-items: center;
     text-align: center;
-    width: 230px;
+    width: 95%;
     height: 48px;
     line-height: 40px;
     padding: 0 1em;

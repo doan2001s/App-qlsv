@@ -156,3 +156,30 @@
         margin-left: 0px;
     }
 }
+
+@media screen and (min-width:550px)
+and (max-width:1200px)
+{
+    .list_add {
+        width: 95%;
+        height: 500px;
+        margin: auto;
+        /* display: flex; */
+    }
+    .form_textt{
+        width: 100%;
+    }
+    .form_container {
+        display: block;
+    }
+
+    .div_button {
+        height: 100px;
+        display: flex;
+        width: 100%;
+    }
+
+    .div_input {
+        margin-left: 0px;
+    }
+}

@@ -294,7 +294,7 @@ const Add = () => {
                     </div>
                 </div>
                 <div className="list_add">
-                    <Form style={{zIndex:0,}} onSubmit={createSinhvien}>
+                    <Form className='form_textt' style={{zIndex:0,}} onSubmit={createSinhvien}>
                         <Spacer y={2} />
                         <div className='form_container'>
                             <div className='div_input'>
