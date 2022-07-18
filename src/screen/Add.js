@@ -319,7 +319,7 @@ const Add = () => {
                             </div>
                             <Spacer y={2} />
                             <div className='div_input'>
-                                <Input color={colorInput.email} clearable bordered labelPlaceholder="Email" type="email" required
+                                <Input color={colorInput.email} clearable bordered labelPlaceholder="Email" type="email" required style={{ textTransform: 'lowercase' }}
                                     // onChange={(event) => { setEmail(event.target.value); }}
                                     onChange={handleEmail}
                                 />
