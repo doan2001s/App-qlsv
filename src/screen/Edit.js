@@ -311,7 +311,7 @@ const Edit = () => {
                                     <Spacer y={2} />
 
                                 </div>
-                                <div className='div_input2'>
+                                <div className='div_input1'>
                                     <Input color={colorInput.lop} clearable bordered labelPlaceholder="Lớp" required style={{ textTransform: 'uppercase' }}
                                         onChange={handleLop} value={lop} />
                                     <Text>{errorMessage.lop}</Text>
