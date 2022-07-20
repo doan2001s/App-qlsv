@@ -40,7 +40,7 @@ const Profile = () => {
     const [email, setEmail] = useState('');
     const [sdt, setSdt] = useState('');
     const [diachi, setDiachi] = useState('');
-    const [mota, setMota] = useState('');
+    const [ngaysinh, setNgaysinh] = useState('');
     const [file, setFile] = useState(null);
     const [id, setId] = useState()
     const [progress, setProgress] = useState(null);
@@ -50,13 +50,14 @@ const Profile = () => {
         hoten: '',
         sdt: '',
         diachi: '',
-        mota: ''
+        ngaysinh:''
+       
     });
     const [colorInput, setColorInput] = useState({
         hoten: '',
         sdt: '',
         diachi: '',
-        mota: ''
+        ngaysinh:''
     });
     const closeHandler = () => {
         setVisible(false);
@@ -70,7 +71,7 @@ const Profile = () => {
             setEmail(Newprofile.data().email)
             setSdt(Newprofile.data().sdt)
             setDiachi(Newprofile.data().diachi)
-            setMota(Newprofile.data().mota)
+            setNgaysinh(Newprofile.data().ngaysinh)
             setId(Newprofile.data().id)
         }
     }
@@ -124,15 +125,19 @@ const Profile = () => {
             setColorInput({ diachi: 'default' });
         }
     }
-    const handleMota = (event) => {
-        setMota(event.target.value)
-        if (isEmpty(event.target.value.trim())) {
-            setErrorMessage({ mota: "Hãy nhập thông tin liên quan đến bạn!" })
-            setColorInput({ mota: 'error' });
-        } else {
-            setErrorMessage({ mota: "" });
-            setColorInput({ mota: 'default' });
-        }
+    // const handleMota = (event) => {
+    //     setMota(event.target.value)
+    //     if (isEmpty(event.target.value.trim())) {
+    //         setErrorMessage({ mota: "Hãy nhập thông tin liên quan đến bạn!" })
+    //         setColorInput({ mota: 'error' });
+    //     } else {
+    //         setErrorMessage({ mota: "" });
+    //         setColorInput({ mota: 'default' });
+    //     }
+    // }
+    const handelNgaysinh = (event)=>{
+        setNgaysinh(event.target.value)
+        
     }
     const handleSdt = (event) => {
         setSdt(event.target.value)
@@ -146,7 +151,7 @@ const Profile = () => {
     }
     const update = async (id) => {
         const user = doc(db, "user", id)
-        const updateUser = { hoten: hoten, diachi: diachi, sdt: sdt, mota: mota, ...data }
+        const updateUser = { hoten: hoten, diachi: diachi, sdt: sdt,ngaysinh:ngaysinh, ...data }
         updateDoc(user, updateUser)
         // console.log(user)
         alert("Cập nhật thành công")
@@ -257,7 +262,7 @@ const Profile = () => {
                                     <strong>Địa chỉ: {profile.diachi}</strong>
                                 </div>
                                 <div className="detail_ct">
-                                    <strong>Thông tin khác: {profile.mota}</strong>
+                                    <strong>Ngày sinh: {profile.ngaysinh}</strong>
                                 </div>
                                 <Modal
                                     closeButton
@@ -299,12 +304,11 @@ const Profile = () => {
                                         />
                                         <Text color="error" > {errorMessage.diachi}</Text>
                                         <Spacer y={1} />
-                                        <Input color={colorInput.mota} clearable bordered labelPlaceholder="Mô tả" type="text" required
-                                            value={mota}
-                                            onChange={handleMota}
-                                        // onChange={(event) => { setMa(event.target.value); }}
+                                        <Input color={colorInput.mota} clearable bordered labelPlaceholder="Ngày sinh" type="date" required
+                                            value={ngaysinh}
+                                            onChange={handelNgaysinh}
                                         />
-                                        <Text color="error" > {errorMessage.mota}</Text>
+                                        <Text color="error" > {errorMessage.ngaysinh}</Text>
                                         <Spacer y={1} />
                                         <label>Ảnh đại diện:</label>
                                         <Input type="file"

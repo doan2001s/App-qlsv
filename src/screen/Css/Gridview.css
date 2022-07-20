@@ -41,7 +41,44 @@
     margin-left: 20px;
 }
 
-@media screen and (min-width: 350px) and (max-width:434px) {
+.modal_detail {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal_tail {
+    display: grid;
+}
+
+@media screen and (min-width: 320px) and (max-width:369px) {
+    .gridview {
+        width: 100%;
+        display: grid;
+        height: auto;
+        justify-content: unset;
+        justify-items: center;
+    }
+
+    .card_sv {
+        width: 90%;
+        margin-right: 0px;
+        height: auto;
+        /* margin-left: 0px; */
+    }
+
+    .pagin_sv {
+        width: 100%;
+    }
+
+    .paginate {
+        height: 100px;
+    }
+    .modal_tail{
+        margin-left: 20px;
+    }
+}
+
+@media screen and (min-width: 370px) and (max-width:434px) {
     .gridview {
         width: 100%;
         display: grid;
@@ -64,25 +101,8 @@
     .paginate {
         height: 100px;
     }
-}
-
-@media screen and (max-width: 320px) and (min-width: 310px) {
-    .gridview {
-        width: 280px;
-    }
-
-    .card_sv {
-        height: 350px;
-        width: 280px;
-        margin-left: 4px;
-    }
-
-    .pagin_sv {
-        width: 280px;
-    }
-
-    .paginate {
-        height: 100px;
+    .modal_tail{
+        margin-left: 20px;
     }
 }
 

@@ -4,15 +4,15 @@ import { ImProfile } from 'react-icons/im'
 import Pagination from './Paginate';
 import { IoEyeSharp } from 'react-icons/io5'
 import { Link, useNavigate } from "react-router-dom";
-import { BsPencilSquare, BsList,BsTable } from 'react-icons/bs'
+import { BsPencilSquare, BsList, BsTable } from 'react-icons/bs'
 import { db } from './firebase'
 import { collection, getDocs, where, query, onSnapshot, doc, deleteDoc, getDoc } from 'firebase/firestore'
 import { MdPersonAdd, MdDelete } from 'react-icons/md'
-import { Modal, Text,Spacer } from '@nextui-org/react'
+import { Modal, Text, Spacer, Avatar } from '@nextui-org/react'
 import './Css/Gridview.css'
 import { Form, Button, } from "react-bootstrap"
 import { confirmAlert } from 'react-confirm-alert';
-import Avatar from 'react-avatar';
+// import Avatar from 'react-avatar';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 const Gridview = () => {
     const navigate = useNavigate();
@@ -168,12 +168,12 @@ const Gridview = () => {
                         </div>
                     </div>
                 </div>
-                <div className={menu? "responship_menu":"responship_menu_block"}>
+                <div className={menu ? "responship_menu" : "responship_menu_block"}>
                     <div id="menu">
                         <ul>
                             <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
                             <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
-                            <li className="li"><div className="icon"><BsTable/></div>Thời khóa biểu</li>
+                            <li className="li"><div className="icon"><BsTable /></div>Thời khóa biểu</li>
                             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
                             <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                 <button className="buttonLog" onClick={handelLogOut}>
@@ -202,9 +202,9 @@ const Gridview = () => {
                             </div>
                             <div className="input2">
                                 <label>Trạng thái:</label>
-                                <Spacer y = {0.2}/>
+                                <Spacer y={0.2} />
                                 <div><Button onClick={clickHoc}>Đang học</Button></div>
-                                <Spacer y = {0.5}/>
+                                <Spacer y={0.5} />
                                 <div><Button onClick={clickXong}>Đã tốt nghiệp</Button></div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@ const Gridview = () => {
                 </div>
                 <div className="change_list">
                     <Link to="/sinhvien"><Button>Xem sinh viên theo dạng bảng</Button></Link>
-                    
+
                     <Link to="/gridview"><Button>Xem sinh viên theo dạng lưới</Button></Link>
                 </div>
                 <div className="gridview">
@@ -230,7 +230,12 @@ const Gridview = () => {
                             <div className="card_sv">
                                 <div className="card_sv1">
                                     <div className="grid_view">
-                                        <Avatar src={sinhvien.img} />
+                                        <Avatar
+                                            size="lg"
+                                            src={sinhvien.img}
+                                            color="gradient"
+                                            bordered
+                                        />
                                     </div>
                                     <div className="grid_view">
                                         <div className="">
@@ -287,8 +292,11 @@ const Gridview = () => {
                 <Modal.Body>
                     <div className="modal_detail">
                         <Avatar
-                            size={150}
-                            src={img} />
+                            css ={{width:100,height:100,}}
+                            src={img}
+                            color="gradient"
+                            bordered
+                        />
                         <div className="modal_tail">
                             <h5>Họ tên: {tensv}</h5>
                             <p>Khoa: {khoa}</p>

@@ -25,6 +25,13 @@ function PersonalInfo({ formData, setFormData, }) {
   }
   const handleSdt = (event) => {
     setFormData({ ...formData, sdt: event.target.value })
+    if (formData.sdt.length <= 8) {
+      setErrorMessage({ sdt: "Số điện thoại ít nhất 10 số!" })
+      setColorInput({ sdt: 'error' });
+  } else {
+      setErrorMessage({ sdt: "" });
+      setColorInput({ sdt: 'default' });
+  }
   }
   const handleDiachi = (event) => {
     setFormData({ ...formData, diachi: event.target.value })
@@ -55,6 +62,9 @@ function PersonalInfo({ formData, setFormData, }) {
           value={formData.sdt}
           onChange={handleSdt}
         />
+      </div>
+      <div className="error_mes">
+        <Text color="error"> {errorMessage.sdt} </Text>
       </div>
       <Spacer y={1.5} />
       <div className="form_page_input">
