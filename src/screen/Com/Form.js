@@ -16,9 +16,7 @@ function Form() {
         hoten: "",
         sdt: "",
         diachi: "",
-        mota: "",
-        nickname: "",
-        file: "",
+        ngaysinh: "",
     });
     const [error, setErrorMsg] = useState(false)
     const [errorPassword, setErrorPasswordMSg] = useState(false)
@@ -39,13 +37,15 @@ function Form() {
         if (page === FormTitles.length - 1) {
             if (formData.email.length === 0 || formData.hoten.length === 0 ||
                 formData.sdt.length === 0 || formData.diachi.length === 0 ||
-                formData.confirmPassword.length === 0 || formData.password.length === 0) {
+                formData.confirmPassword.length === 0 || formData.password.length === 0 || formData.ngaysinh.length === 0) {
                 alert("Bạn cần phải nhập đủ dữ liệu", setErrorMsg(true))
             }
             if (formData.password.trim() !== formData.confirmPassword.trim()) {
                 alert("Mật khẩu của bạn không khớp!", setErrorPasswordMSg(true))
             }
-            else {
+            if (formData.email && formData.hoten &&
+                formData.sdt && formData.diachi &&
+                formData.confirmPassword && formData.password && formData.ngaysinh ) {
                 let check = 0;
                 const test = query(collection(db, "user"), where("email", "==", formData.email))
                 const resul = await getDocs(test)
@@ -67,7 +67,7 @@ function Form() {
                     const add = await addDoc(userCollectionRel,
                         {
                             email: formData.email, password: formData.password, confirmPassword: formData.confirmPassword,
-                            hoten: formData.hoten, sdt: formData.sdt, diachi: formData.diachi, mota: formData.mota, nickname: formData.nickname
+                            hoten: formData.hoten, sdt: formData.sdt, diachi: formData.diachi, ngaysinh: formData.ngaysinh
                         })
                     if (add) {
                         alert("Đăng ký thành công");

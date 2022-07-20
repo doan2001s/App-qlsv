@@ -41,42 +41,30 @@
     margin-left: 20px;
 }
 
-@media screen and (min-width: 395px) and (max-width:414px) {
+@media screen and (min-width: 350px) and (max-width:434px) {
     .gridview {
-        width: 414px;
+        width: 100%;
+        display: grid;
+        height: 200%;
+        justify-content: unset;
+        justify-items: center;
     }
 
     .card_sv {
-        width: 390px;
-        margin-left: 13px;
+        width: 85%;
+        margin-right: 0px;
+        height: auto;
+        /* margin-left: 0px; */
     }
 
     .pagin_sv {
-        width: 414px;
+        width: 100%;
     }
-    .paginate{
+
+    .paginate {
         height: 100px;
     }
 }
-
-@media screen and (max-width: 375px) and (min-width: 360px) {
-    .gridview {
-        width: 350px;
-    }
-
-    .card_sv {
-        width: 340px;
-        margin-left: 4px;
-    }
-
-    .pagin_sv {
-        width: 350px;
-    }
-    .paginate{
-        height: 100px;
-    }
-}
-
 @media screen and (max-width: 320px) and (min-width: 310px) {
     .gridview {
         width: 280px;
@@ -91,49 +79,11 @@
     .pagin_sv {
         width: 280px;
     }
-    .paginate{
+
+    .paginate {
         height: 100px;
     }
 }
-
-@media screen and (max-width: 390px) and (min-width:380px) {
-    .gridview {
-        width: 280px;
-    }
-
-    .card_sv {
-        height: 350px;
-        width: 280px;
-        margin-left: 4px;
-    }
-
-    .pagin_sv {
-        width: 380px;
-    }
-    .paginate{
-        height: 100px;
-    }
-}
-
-@media screen and (max-width: 395px) and (min-width:390px) {
-    .gridview {
-        width: 380px;
-    }
-
-    .card_sv {
-        /* height: 80px; */
-        width: 375px;
-        margin-left: 5px;
-    }
-
-    .pagin_sv {
-        width: 380px;
-    }
-    .paginate{
-        height: 100px;
-    }
-}
-
 @media screen and (max-width:825px) and (min-width:800px) {
     .gridview {
         width: 800px;
@@ -149,11 +99,13 @@
     .pagin_sv {
         width: 800px;
     }
-    .paginate{
+
+    .paginate {
         height: 100px;
     }
 }
-@media screen and (max-width:280px) and (min-width:260px){
+
+@media screen and (max-width:280px) and (min-width:260px) {
     .gridview {
         width: 270px;
     }
@@ -166,19 +118,19 @@
     .pagin_sv {
         width: 270px;
     }
-    .paginate{
+
+    .paginate {
         height: 100px;
         width: 270px;
     }
 }
-@media screen and (min-width:550px)
-and (max-width:1200px)
-{
+
+@media screen and (min-width:550px) and (max-width:1200px) {
     .gridview {
         width: 100%;
         display: grid;
         height: 200%;
-        justify-content:unset;
+        justify-content: unset;
         justify-items: center;
     }
 
@@ -195,7 +147,37 @@ and (max-width:1200px)
         display: flex;
         width: 100%;
     }
-    .paginate{
+
+    .paginate {
+        height: 100px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:435px) and (max-width:549px) {
+    .gridview {
+        width: 100%;
+        display: grid;
+        height: 200%;
+        justify-content: unset;
+        justify-items: center;
+    }
+
+    .card_sv {
+        /* margin: auto; */
+        /* height: 300px;
+        width: 80%;
+        float: left; */
+        width: 80%;
+        margin-right: 0px;
+    }
+
+    .pagin_sv {
+        display: flex;
+        width: 100%;
+    }
+
+    .paginate {
         height: 100px;
         width: 100%;
     }

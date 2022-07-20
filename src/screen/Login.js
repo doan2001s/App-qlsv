@@ -57,7 +57,7 @@ const Login = () => {
           }
         })
         if (checkPassword >= 1 && check >= 1) {
-          alert("Tài khoản mật khẩu chính xác");
+          // alert("Tài khoản mật khẩu chính xác");
           localStorage.setItem("email", email)
           checkresul = false;
           navigate(`/gridview`)

@@ -53,10 +53,14 @@ function SignUpInfo({ formData, setFormData }) {
     }
     const handlePassword = (event) => {
         setFormData({ ...formData, password: event.target.value })
-        if (isEmpty(formData.password.trim())) {
-            setErrorMessage({ password: "Hãy nhập mật khẩu vào đây!" })
-            setColorInput({ password: 'error' });
+        if(formData.password.length < 6){
+            setErrorMessage({ password: "Mật khẩu phải lớn hơn 6 ký tự!" })
+                setColorInput({ password: 'error' });
         }
+        // if (isEmpty(formData.password.trim())) {
+        //     setErrorMessage({ password: "Hãy nhập mật khẩu vào đây!" })
+        //     setColorInput({ password: 'error' });
+        // }
         else {
             setErrorMessage({ password: "" });
             setColorInput({ password: 'default' });
