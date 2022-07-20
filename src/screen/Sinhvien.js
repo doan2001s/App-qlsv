@@ -143,14 +143,14 @@ const Sinhvien = () => {
         <hr className='hr' />
         <div id="menu">
           <ul>
-            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
-            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+            <Link className="a" to="/sinhvien"><li className='active'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+            <Link className="a" to="/profile"><li className='li'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-              <button className="buttonLog" onClick={handelLogOut}>
+            <button className="buttonLog" onClick={handelLogOut}>
+              <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                 Đăng xuất
-              </button>
-            </li>
+              </li>
+            </button>
           </ul>
         </div>
       </div>
@@ -211,9 +211,9 @@ const Sinhvien = () => {
           </div> */}
         </div>
         <div className="change_list">
-                    <Link to="/sinhvien"><Button>Xem sinh viên theo dạng bảng</Button></Link>
-                    <Link to="/gridview"><Button>Xem sinh viên theo dạng lưới</Button></Link>
-                </div>
+          <Link to="/sinhvien"><Button>Xem sinh viên theo dạng bảng</Button></Link>
+          <Link to="/gridview"><Button>Xem sinh viên theo dạng lưới</Button></Link>
+        </div>
         <div className="list_sv">
           <Table
             aria-label="Example table with static content"
@@ -221,7 +221,7 @@ const Sinhvien = () => {
               height: "auto",
               minWidth: "100%",
               zIndex: "0",
-              boxShadow:"1px 2px 10px 1px #888888"
+              boxShadow: "1px 2px 10px 1px #888888"
             }}
           >
             <Table.Header>

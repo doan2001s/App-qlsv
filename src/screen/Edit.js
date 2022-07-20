@@ -211,14 +211,14 @@ const Edit = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
-                        <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                        <Link className="a" to="/sinhvien"><li className='active'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                        <Link className="a" to="/profile"><li className='li'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                        <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                            <button className="buttonLog" onClick={handelLogOut}>
+                        <button className="buttonLog" onClick={handelLogOut}>
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                 Đăng xuất
-                            </button>
-                        </li>
+                            </li>
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -252,15 +252,14 @@ const Edit = () => {
                 <div className={menu ? "responship_menu" : "responship_menu_block"}>
                     <div id="menu">
                         <ul>
-                            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
-                            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
-                            <li className="li"><div className="icon"><BsTable /></div>Thời khóa biểu</li>
+                            <Link className="a" to="/sinhvien"><li className='active'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                            <Link className="a" to="/profile"><li className='li'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                                <button className="buttonLog" onClick={handelLogOut}>
+                            <button className="buttonLog" onClick={handelLogOut}>
+                                <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                     Đăng xuất
-                                </button>
-                            </li>
+                                </li>
+                            </button>
                         </ul>
                     </div>
                 </div>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Css/Add.css'
 import { FaUserGraduate, FaTachometerAlt, FaSignInAlt, } from 'react-icons/fa'
-import {BsList,BsTable } from 'react-icons/bs'
+import { BsList, BsTable } from 'react-icons/bs'
 import { ImProfile, } from 'react-icons/im'
 import { Link } from 'react-router-dom';
 import { Input, Spacer, Button, Grid, Text } from "@nextui-org/react";
 import { Form } from "react-bootstrap";
 import { db, storage } from './firebase';
-import { collection, addDoc, getDocs, where, query,} from 'firebase/firestore';
+import { collection, addDoc, getDocs, where, query, } from 'firebase/firestore';
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from 'react-router-dom';
 import { isEmpty } from "validator"
@@ -33,7 +33,7 @@ const Add = () => {
     const [error, setErrorMsg] = useState(false)
     const [progress, setProgress] = useState(null);
     const sinhvienCollectionRel = collection(db, "sinhvien")
-    const [data,setData] = useState();
+    const [data, setData] = useState();
     const [errorMessage, setErrorMessage] = useState({
         masv: '',
         ten: '',
@@ -174,7 +174,7 @@ const Add = () => {
                     checkresul = true
                 }
                 if (checkresul) {
-                    const add = await addDoc(sinhvienCollectionRel, { masv: masv, tensv: ten, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa,...data })
+                    const add = await addDoc(sinhvienCollectionRel, { masv: masv, tensv: ten, email: email, diachi: diachi, trangthai: trangthai, sdt: sdt, ngaysinh: ngaysinh, lop: lop, khoa: khoa, ...data })
                     if (add) {
                         alert("Thêm sinh viên thành công")
                         navigate("/gridview")
@@ -197,23 +197,23 @@ const Add = () => {
             uploadTask.on("state_changed", (snapshot) => {
                 const progress =
                     (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    setProgress(progress);
-                    switch(snapshot.state){
-                        case "paused":
-                            console.log("upload  is pause")
-                        break ;
-                        case "running":
-                            console.log("upload is runing")
+                setProgress(progress);
+                switch (snapshot.state) {
+                    case "paused":
+                        console.log("upload  is pause")
                         break;
-                        default:
-                            break;
-                    }
-            },(error)=>{
+                    case "running":
+                        console.log("upload is runing")
+                        break;
+                    default:
+                        break;
+                }
+            }, (error) => {
                 console.log(error)
             },
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
-                setData((prev)=>({...prev,img:downloadURL}))
-            })
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    setData((prev) => ({ ...prev, img: downloadURL }))
+                })
             )
         }
         file && uploadFile()
@@ -232,14 +232,14 @@ const Add = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
-                        <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/edit">Tiểu sử</Link></li>
+                        <Link className="a" to="/sinhvien"><li className='active'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                        <Link className="a" to="/profile"><li className='li'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                        <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                            <button className="buttonLog" onClick={handelLogOut}>
+                        <button className="buttonLog" onClick={handelLogOut}>
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                 Đăng xuất
-                            </button>
-                        </li>
+                            </li>
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -270,18 +270,17 @@ const Add = () => {
                         </div>
                     </div>
                 </div>
-                <div className={menu? "responship_menu":"responship_menu_block"}>
+                <div className={menu ? "responship_menu" : "responship_menu_block"}>
                     <div id="menu">
                         <ul>
-                            <li className='active'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
-                            <li className='li'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
-                            <li className="li"><div className="icon"><BsTable/></div>Thời khóa biểu</li>
+                            <Link className="a" to="/sinhvien"><li className='active'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                            <Link className="a" to="/profile"><li className='li'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                                <button className="buttonLog" onClick={handelLogOut}>
+                            <button className="buttonLog" onClick={handelLogOut}>
+                                <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                     Đăng xuất
-                                </button>
-                            </li>
+                                </li>
+                            </button>
                         </ul>
                     </div>
                 </div>
@@ -294,7 +293,7 @@ const Add = () => {
                     </div>
                 </div>
                 <div className="list_add">
-                    <Form className='form_textt' style={{zIndex:0,}} onSubmit={createSinhvien}>
+                    <Form className='form_textt' style={{ zIndex: 0, }} onSubmit={createSinhvien}>
                         <Spacer y={2} />
                         <div className='form_container'>
                             <div className='div_input'>
@@ -326,7 +325,7 @@ const Add = () => {
                                 <Text color="error">{errorMessage.email}</Text>
                                 <Spacer y={2} />
                                 <Input color={colorInput.sdt} clearable bordered labelPlaceholder="Số điện thoại" required type="number"
-                                    onChange={handleSdt} 
+                                    onChange={handleSdt}
                                 // onChange={(event) => { setSdt(event.target.value); }}
                                 />
                                 <Text color="error">{errorMessage.sdt}</Text>

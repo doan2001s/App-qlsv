@@ -60,7 +60,12 @@
   font-weight: bold;
   display: block;
 }
-
+.a{
+  text-decoration: none;
+}
+.a:hover{
+  text-decoration: none;
+}
 .li:hover {
   background: silver;
   transition: 0.5s;
@@ -254,15 +259,6 @@ button {
 .buttonLog {
   background: none;
   color: white;
-}
-
-.modal_detail {
-  display: flex;
-  justify-content: space-around;
-}
-
-.modal_tail {
-  display: grid;
 }
 
 .change_list {

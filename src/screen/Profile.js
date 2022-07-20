@@ -50,14 +50,14 @@ const Profile = () => {
         hoten: '',
         sdt: '',
         diachi: '',
-        ngaysinh:''
-       
+        ngaysinh: ''
+
     });
     const [colorInput, setColorInput] = useState({
         hoten: '',
         sdt: '',
         diachi: '',
-        ngaysinh:''
+        ngaysinh: ''
     });
     const closeHandler = () => {
         setVisible(false);
@@ -135,9 +135,9 @@ const Profile = () => {
     //         setColorInput({ mota: 'default' });
     //     }
     // }
-    const handelNgaysinh = (event)=>{
+    const handelNgaysinh = (event) => {
         setNgaysinh(event.target.value)
-        
+
     }
     const handleSdt = (event) => {
         setSdt(event.target.value)
@@ -151,7 +151,7 @@ const Profile = () => {
     }
     const update = async (id) => {
         const user = doc(db, "user", id)
-        const updateUser = { hoten: hoten, diachi: diachi, sdt: sdt,ngaysinh:ngaysinh, ...data }
+        const updateUser = { hoten: hoten, diachi: diachi, sdt: sdt, ngaysinh: ngaysinh, ...data }
         updateDoc(user, updateUser)
         // console.log(user)
         alert("Cập nhật thành công")
@@ -169,14 +169,14 @@ const Profile = () => {
                 <hr className='hr' />
                 <div id="menu">
                     <ul>
-                        <li className='li'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/sinhvien">Sinh viên</Link></li>
-                        <li className='active'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
+                        <Link className="a" to="/sinhvien"><li className='li'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                        <Link className="a" to="/profile"><li className='active'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                         {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                        <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                            <button className="buttonLog" onClick={handelLogOut}>
+                        <button className="buttonLog" onClick={handelLogOut}>
+                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                 Đăng xuất
-                            </button>
-                        </li>
+                            </li>
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -207,15 +207,14 @@ const Profile = () => {
                 <div className={menu ? "responship_menu" : "responship_menu_block"}>
                     <div id="menu">
                         <ul>
-                            <li className='li'><div className='icon'><FaUserGraduate size={22} /></div><Link to="/gridview">Sinh viên</Link></li>
-                            <li className='active'><div className='icon'><ImProfile size={22} /></div><Link to="/profile">Tiểu sử</Link></li>
-                            <li className="li"><div className="icon"><BsTable /></div>Thời khóa biểu</li>
+                            <Link className="a" to="/sinhvien"><li className='li'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                            <Link className="a" to="/profile"><li className='active'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
-                            <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
-                                <button className="buttonLog" onClick={handelLogOut}>
+                            <button className="buttonLog" onClick={handelLogOut}>
+                                <li className='li'><div className='icon'><FaSignInAlt size={22} /></div>
                                     Đăng xuất
-                                </button>
-                            </li>
+                                </li>
+                            </button>
                         </ul>
                     </div>
                 </div>
