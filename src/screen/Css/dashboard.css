@@ -586,7 +586,7 @@ and (max-width:1200px)
   
   .main_right {
     width: 100%;
-    
+    height: 100%;
   }
   .mr_top {
     width: 100%;
