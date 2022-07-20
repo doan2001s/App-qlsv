@@ -51,7 +51,7 @@
     }
 
     .card_sv {
-        width: 85%;
+        width: 90%;
         margin-right: 0px;
         height: auto;
         /* margin-left: 0px; */
@@ -65,6 +65,7 @@
         height: 100px;
     }
 }
+
 @media screen and (max-width: 320px) and (min-width: 310px) {
     .gridview {
         width: 280px;
@@ -84,6 +85,7 @@
         height: 100px;
     }
 }
+
 @media screen and (max-width:825px) and (min-width:800px) {
     .gridview {
         width: 800px;
