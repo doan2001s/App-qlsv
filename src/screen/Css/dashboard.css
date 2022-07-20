@@ -396,6 +396,7 @@ button {
 
   .main_right {
     width: 820px;
+    overflow-y: hidden;
   }
 
   .mr_top {
@@ -585,7 +586,7 @@ and (max-width:1200px)
   
   .main_right {
     width: 100%;
-  
+    overflow-y: hidden;
   }
   .mr_top {
     width: 100%;
