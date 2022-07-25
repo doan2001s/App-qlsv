@@ -7,6 +7,7 @@ import { db } from '../firebase';
 import { collection, addDoc, getDocs, where, query } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom'
 import './style.css'
+import isEmail from 'validator/es/lib/isEmail';
 function Form() {
     const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ function Form() {
             }
             if (formData.email && formData.hoten &&
                 formData.sdt && formData.diachi &&
-                formData.confirmPassword && formData.password && formData.ngaysinh ) {
+                formData.confirmPassword && formData.password && formData.ngaysinh) {
                 let check = 0;
                 const test = query(collection(db, "user"), where("email", "==", formData.email))
                 const resul = await getDocs(test)
@@ -70,7 +71,7 @@ function Form() {
                             hoten: formData.hoten, sdt: formData.sdt, diachi: formData.diachi, ngaysinh: formData.ngaysinh
                         })
                     if (add) {
-                        alert("Đăng ký thành công");
+                        // alert("Đăng ký thành công");
                         navigate("/")
                     }
                 }
@@ -79,7 +80,25 @@ function Form() {
                 }
             }
         } else {
-            setPage((currPage) => currPage + 1);
+            console.log("page", page)
+
+            if (page === 0) {
+                if (formData.password.length > 6 && formData.password.trim() === formData.confirmPassword.trim()
+                    && isEmail(formData.email.trim())) {
+                    console.log("formData.email.length >2 ")
+                    setPage((currPage) => currPage + 1);
+                }
+                else{
+                    alert("Hãy nhập dữ liệu")
+                }
+            } if (page === 1) {
+                if (formData.diachi.length > 1 && formData.hoten.length > 1 && formData.sdt.length > 9 ) {
+                    setPage((currPage) => currPage + 1);
+                }
+                else{
+                    alert("Hãy nhập dữ liệu")
+                }
+            }
         }
     }
     return (

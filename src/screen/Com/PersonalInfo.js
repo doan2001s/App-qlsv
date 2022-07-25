@@ -28,10 +28,10 @@ function PersonalInfo({ formData, setFormData, }) {
     if (formData.sdt.length <= 8) {
       setErrorMessage({ sdt: "Số điện thoại ít nhất 10 số!" })
       setColorInput({ sdt: 'error' });
-  } else {
+    } else {
       setErrorMessage({ sdt: "" });
       setColorInput({ sdt: 'default' });
-  }
+    }
   }
   const handleDiachi = (event) => {
     setFormData({ ...formData, diachi: event.target.value })

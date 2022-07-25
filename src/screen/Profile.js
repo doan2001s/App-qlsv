@@ -207,7 +207,7 @@ const Profile = () => {
                 <div className={menu ? "responship_menu" : "responship_menu_block"}>
                     <div id="menu">
                         <ul>
-                            <Link className="a" to="/sinhvien"><li className='li'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
+                            <Link className="a" to="/gridview"><li className='li'><div className='icon'><FaUserGraduate size={22} /></div>Sinh viên</li></Link>
                             <Link className="a" to="/profile"><li className='active'><div className='icon'><ImProfile size={22} /></div>Tiểu sử</li></Link>
                             {/* <li className='li'><div className='icon'><ImTable size={22} /></div>Thời khóa biểu</li> */}
                             <button className="buttonLog" onClick={handelLogOut}>
